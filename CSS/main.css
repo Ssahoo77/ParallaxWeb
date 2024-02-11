@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+/*
+@mixin align-center { allow to create function that can be used in css code
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+*/
+
+body{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 3em;
+    color: aliceblue;
+}
+.Parallax_wrapper{
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    perspective: 300px;/*refers to z axix*/
+}
+
+.intro_screen{
+    height: 100vh;
+    background-color: rgb(185, 70, 70);
+    /*@include align-center;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.outro_screen{
+    height: 100vh;
+    background-color: rgb(40, 157, 141);
+    /*@include align-center;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Parallax_group{
+    position: relative;
+    height: 100vh;
+    transform-style: preserve-3d;
+
+}
+    
+.Parallax_layer{
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+
+.base_layer{
+    /*scale calculation: 1+ ((Z transform value * -1)/perspective) */
+
+    transform: translateZ(-300px) scale(2.1);
+
+}
+
+.mid_layer{
+    transform: translateZ(0);
+}
+
+.top_layer{
+    transform: translateZ(210px) scale(0.3);
+}
+
+#intro{
+    z-index: 0;
+}
+
+#group1{
+    z-index: -1;
+}
+
+#group1 > .base_layer{
+    background-color: rgb(135, 78, 187);
+}
+
+#group2{
+}
+
+#group2 > .mid_layer{
+    background-color: rgb(187, 78, 143);
+}
+
+#outro{}
